@@ -64,7 +64,8 @@ COORD Sprite::GetSize() const
 
 void Sprite::SetPosition(const unsigned int newX, const unsigned int newY)
 {
-	Position = Vec2(newX, newY);
+	Position.X = newX;
+	Position.Y = newY;
 }
 
 CHAR_INFO * Sprite::GetBuffer()
@@ -85,7 +86,7 @@ PixelSprite::PixelSprite(const unsigned int width, const unsigned int height, co
 
 AnimatedPixelSprite::AnimatedPixelSprite()
 {
-
+	
 }
 
 void AnimatedPixelSprite::setRateofAnimation(const float Rate)
@@ -98,12 +99,12 @@ void AnimatedPixelSprite::setRateofAnimation(const unsigned int Rate)
 	RateOfAnimation = (float)Rate / 1000.0f;
 }
 
-void AnimatedPixelSprite::AddSprite(PixelSprite sprite)
+void AnimatedPixelSprite::AddSprite(PixelSprite *sprite)
 {
 	animationCollection.push_back(sprite);
 }
 
-PixelSprite AnimatedPixelSprite::getAnimation()
+PixelSprite* AnimatedPixelSprite::getAnimation()
 {
 	//add the recent time to the total
 	total += Timer::GetDeltaTime();
@@ -120,6 +121,5 @@ PixelSprite AnimatedPixelSprite::getAnimation()
 			CurrentAnimation = 0;
 		}
 	}
-	
 	return animationCollection[CurrentAnimation];
 }

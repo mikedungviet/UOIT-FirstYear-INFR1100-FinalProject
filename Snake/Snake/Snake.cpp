@@ -2,7 +2,7 @@
 
 
 
-Snake::Snake()
+Snake::Snake() : PixelSprite(8,8,6)
 {
 	colliding = false;
 	movingDown = false;
@@ -17,14 +17,4 @@ Snake::Snake()
 
 Snake::~Snake()
 {
-}
-
-PixelSprite Snake::getSprite()
-{
-	return pm_sprite;
-}
-
-Vec2 Snake::getHeadPosition()
-{
-	return headPosition;
 }

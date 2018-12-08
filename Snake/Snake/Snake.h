@@ -17,7 +17,5 @@ public:
 
 	Snake();
 	~Snake();
-
-	Vec2 getHeadPosition();
 };
 

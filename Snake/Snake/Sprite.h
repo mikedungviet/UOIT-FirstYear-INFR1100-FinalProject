@@ -1,6 +1,16 @@
 #pragma once
 #include <Windows.h>
 #include <vector>
+#include "Vec2.h"
+
+//struct Vec2 : public _COORD
+//{
+//	Vec2(unsigned int newX = 0, unsigned int newY = 0)
+//	{
+//		X = newX;
+//		Y = newY;
+//	}
+//};
 
 class Sprite
 {
@@ -23,15 +33,6 @@ public:
 
 
 protected:
-	struct Vec2 : public _COORD
-	{
-		Vec2() {}
-		Vec2(unsigned int newX, unsigned int newY)
-		{
-			X = newX;
-			Y = newY;
-		}
-	};
 	//The buffer to contain sprite info such as char and colour
 	CHAR_INFO *Buffer = nullptr;
 	//pos
@@ -59,12 +60,12 @@ public:
 	//set rate in milliseconds
 	void setRateofAnimation(const unsigned int);
 
-	void AddSprite(PixelSprite sprite);
+	void AddSprite(PixelSprite *sprite);
 
-	PixelSprite getAnimation();
+	PixelSprite* getAnimation();
 
 private:
-	std::vector<PixelSprite> animationCollection;
+	std::vector<PixelSprite*> animationCollection;
 	unsigned int CurrentAnimation = 0;
 	float RateOfAnimation = 0;
 	float last;

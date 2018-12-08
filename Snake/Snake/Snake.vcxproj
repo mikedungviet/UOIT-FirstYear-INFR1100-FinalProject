@@ -121,6 +121,7 @@
     <ClCompile Include="Snake.cpp" />
     <ClCompile Include="Sprite.cpp" />
     <ClCompile Include="TextWindow.cpp" />
+    <ClCompile Include="Timer.cpp" />
     <ClCompile Include="Vector2.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -131,6 +132,7 @@
     <ClInclude Include="Sprite.h" />
     <ClInclude Include="TextWindow.h" />
     <ClInclude Include="Timer.h" />
+    <ClInclude Include="Vec2.h" />
     <ClInclude Include="Vector2.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

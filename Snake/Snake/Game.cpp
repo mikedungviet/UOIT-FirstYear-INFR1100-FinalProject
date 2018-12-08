@@ -11,10 +11,36 @@
 
 int main()
 {
+	Snake snake;
 
-	Snake snake(8, 8, 6);
+
+	Timer::InitDeltaTime();
+
+	TextWindow tw(0, 0);
+	//PixelSprite mySprite(4, 4, 6);
+	//PixelSprite mySprite2(20, 20, 8);
+
+	PixelSprite *mySprite = new PixelSprite(4, 4, 6);
+	PixelSprite *mySprite2 = new PixelSprite(20, 20, 8);
+	//mySprite.SetPosition(mySprite.GetPosition().X + 5, mySprite.GetPosition().Y);
+	
+	int tempX = 0;
+	int tempY = 0;
+	mySprite->SetPosition(tempX + 1, tempY);
+
+	AnimatedPixelSprite aps;
+	aps.AddSprite(mySprite2);
+	aps.setRateofAnimation(0.01f);
+	tw.ResizeWindow(0, 0);
+
 	while (true)
 	{
+		Timer::CalculateDeltaTime();
+		mySprite->SetPosition(mySprite->GetPosition().X + 1, mySprite->GetPosition().Y);
+		aps.AddSprite(mySprite);
+		tw.RenderSprite(aps.getAnimation());
+		tw.SwapBackBuffers();
+
 		if (isEvent(Events::Escape))
 		{
 			break;
@@ -28,36 +54,21 @@ int main()
 		else if (isEvent(Events::D))
 		{
 			snake.movingRight = true;
+			tempX += 50;
 		}
 		//Down
 		else if (isEvent(Events::S))
 		{
 			snake.movingDown = true;
+			tempY++;
 		}
 		//Up
 		else if (isEvent(Events::W))
 		{
 			snake.movingUp = true;
 		}
-	}
 
-
-	Timer::InitDeltaTime();
-
-	TextWindow tw(600, 800);
-	PixelSprite mySprite(4, 4, 6);
-	PixelSprite mySprite2(20, 20, 8);
-	mySprite.SetPosition(mySprite.GetPosition().X + 5, mySprite.GetPosition().Y);
-	AnimatedPixelSprite aps;
-	aps.AddSprite(mySprite2);
-	aps.setRateofAnimation(0.1f);
-	tw.ResizeWindow(800, 600);
-
-	while (true)
-	{
-		Timer::CalculateDeltaTime();
 		aps.AddSprite(mySprite);
-		mySprite.SetPosition(mySprite.GetPosition().X + 5, mySprite.GetPosition().Y);
 		tw.RenderSprite(aps.getAnimation());
 		tw.SwapBackBuffers();
 	}
