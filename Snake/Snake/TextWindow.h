@@ -14,6 +14,8 @@ public:
 
 	void ResizeScreenBuffers(unsigned int width, unsigned int height);
 	void RenderSprite(Sprite a);
+
+	void ResizeWindow(const unsigned int width, unsigned int height);
 	void SwapBackBuffers();
 
 	

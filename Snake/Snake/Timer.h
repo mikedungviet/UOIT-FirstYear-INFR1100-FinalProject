@@ -3,27 +3,15 @@
 class Timer
 {
 public:
-	static void InitializeDeltaTime()
-	{
-		Last = (float)std::clock() / 1000.0f;
-	};
-	static void CalculateDeltaTime()
-	{
-		float timeCycle = (float)std::clock() / 1000.0f;
-		DeltaTime =timeCycle - Last;
-		Last = timeCycle;
+	static void InitDeltaTime();
 
-	};
-	static float GetDeltaTime()
-	{
-		return DeltaTime;
-	};
+	static void CalculateDeltaTime();
+
+	//return float in SECONDS
+	static float GetDeltaTime();
 
 
 private:
 	static float Last;
 	static float DeltaTime;
 };
-
-float Timer::Last = 0.0f;
-float Timer::DeltaTime = 0.0f;

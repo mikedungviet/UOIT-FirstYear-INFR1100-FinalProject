@@ -10,8 +10,8 @@ Snake::Snake()
 	movingRight = false;
 	movingLeft = false;
 
-	headPosition.x = 3;
-	headPosition.y = 4;
+	headPosition.X = 3;
+	headPosition.Y = 4;
 }
 
 
@@ -19,17 +19,7 @@ Snake::~Snake()
 {
 }
 
-int Snake::getSize()
-{
-	return pm_size;
-}
-
-void Snake::setSize(int p_size)
-{
-	pm_size = p_size;
-}
-
-Sprite Snake::getSprite()
+PixelSprite Snake::getSprite()
 {
 	return pm_sprite;
 }
